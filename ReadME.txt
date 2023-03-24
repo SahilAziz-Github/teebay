@@ -37,7 +37,7 @@ Summary.js: A final summary of all the details of the product is shown here befo
 
 BACKEND: 
 
-Node.js has been used. Database is Postgresql.Files are in folder named "Express-Crash". Runs on localhost:6969/graphql. 
+Node.js has been used. Database is Postgresql.Files are in folder named "Express-Crash". Runs on localhost:3333/graphql. 
 
 app.js: Firstly the graphql module and the various GraphQL data types are imported. next the @prisma/client module is imported which is an ORM, new instance of prisma client is created. This GraphQL server defines a schema with two main types USER and PRODUCT. It connects to a database using Prisma Client to perform CRUD operations
 
