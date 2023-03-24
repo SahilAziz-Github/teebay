@@ -1,0 +1,54 @@
+CREATE TABLE Users (
+	id serial PRIMARY KEY,
+	firstname VARCHAR ( 50 ) NOT NULL,
+	lastname VARCHAR ( 50 ) NOT NULL,
+	address VARCHAR(50) NOT NULL,
+	email VARCHAR ( 255 ) UNIQUE NOT NULL,
+	password VARCHAR ( 50 ) NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+    last_login TIMESTAMP 
+);
+
+CREATE TABLE Products (
+	id serial PRIMARY KEY,
+	title VARCHAR ( 50 ) NOT NULL,
+	description VARCHAR ( 255 ) NOT NULL,
+	category VARCHAR ( 255 ) NOT NULL,
+	price real NOT NULL,
+	rent real NOT NULL,
+	rent_option VARCHAR ( 50 ) NOT NULL,
+	owner_id int NOT NULL,
+	created_at TIMESTAMP NOT NULL,
+	expires_at TIMESTAMP,
+	FOREIGN KEY (owner_id) REFERENCES users (id)
+);
+
+
+Graphql:
+query {
+  getAllUsers{id,firstname,lastname,address,email,password,created_at}
+  getAllProducts{id,title,category,description,price,rent,rent_option,owner_id,created_at}
+}
+
+mutation {
+  createUser(firstname:"Thomas", lastname:"Shelby", address: "42 Old Street", email: "tshelby@hotmail.uk", password: "whiskey99") {
+    firstname
+  }
+  createUser(firstname:"Sherlock", lastname:"Holmes", address: "221b Baker Street", email: "sherlock@hotmail.uk", password: "iamsherlocked") {
+    firstname
+  }
+}
+
+mutation {
+  createProduct(title:"Apache RTR 4V", description: "Apache RTR 4V 160cc SD", category: "OUTDOOR", price:220000.0, rent:10000.0, rent_option:"by day", owner_id: 1) {
+    title,
+    owner_id,
+    price
+  }
+  createProduct(title:"Apache RTR 2V", description: "Apache RTR 2V 160cc DD", category: "OUTDOOR", price:200000.0, rent:8000.0, rent_option:"by day", owner_id: 2) {
+    title,
+    owner_id,
+    price
+  }
+}
+
