@@ -27,7 +27,7 @@ function Price () {
             </select>
           </label>
           <br />
-          <button onClick={() => Navigate("Description")}>Back</button>
+          <button onClick={() => Navigate("/Description")}>Back</button>
           <button onClick={() => Navigate("/Summary")}>Next</button>
         </div>
     )
